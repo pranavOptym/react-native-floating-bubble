@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/fab-it-hub/react-native-floating-bubble/issues"
   },
-  "homepage": "https://github.com/fab-it-hub/react-native-floating-bubble#readme"
+  "homepage": "https://github.com/fab-it-hub/react-native-floating-bubble#readme",
+  "packageManager": "yarn@3.6.1"
 }
