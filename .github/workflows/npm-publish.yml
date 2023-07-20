@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: cd library && yarn install --immutable --immutable-cache
+      - run: cd library && yarn install
       - run: yarn test
 
   publish-npm:
@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: cd library && yarn install --immutable --immutable-cache && yarn build
+      - run: cd library && yarn install && yarn build
       - run: yarn npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
