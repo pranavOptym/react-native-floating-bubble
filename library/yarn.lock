@@ -4,9 +4,9 @@
 __metadata:
   version: 6
 
-"@fab-it-hub/react-native-floating-bubble@workspace:.":
+"@fabithub/react-native-floating-bubble@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@fab-it-hub/react-native-floating-bubble@workspace:."
+  resolution: "@fabithub/react-native-floating-bubble@workspace:."
   peerDependencies:
     react-native: ^0.70.0
   languageName: unknown
