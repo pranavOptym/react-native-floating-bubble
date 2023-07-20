@@ -28,6 +28,6 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: cd library && yarn install && yarn build
-      - run: cd library && yarn npm publish --access public
+      - run: cd library && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
