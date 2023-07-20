@@ -1,5 +1,5 @@
 {
-  "name": "react-native-floating-bubble",
+  "name": "@fab-it-hub/react-native-floating-bubble",
   "version": "1.0.0",
   "description": "Floating bubbles for React Native Android",
   "main": "index.js",
@@ -9,13 +9,17 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
+  "author": "Krishna Gujjjar",
   "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.70.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fab-it-hub/react-native-floating-bubble.git"
-  }
+    "url": "git+https://github.com/fab-it-hub/react-native-floating-bubble.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fab-it-hub/react-native-floating-bubble/issues"
+  },
+  "homepage": "https://github.com/fab-it-hub/react-native-floating-bubble#readme"
 }
