@@ -1,5 +1,7 @@
 # react-native-floating-bubble
 
+> It is a fork of [Hybriteq's React Native Floating Bubble](https://github.com/hybriteq/react-native-floating-bubble) repository and is compatible with the newest `react-native v0.72.3`.
+
 A simple Facebook Chat Head like bubble for react native. Special thanks to [bubble-for-android](https://github.com/txusballesteros/bubbles-for-android) because this is just react native wrapper for that library.
 
 ![Preview](https://github.com/fab-it-hub/react-native-floating-bubble/raw/master/preview.gif)
@@ -86,5 +88,4 @@ Place the icon file as `android/app/src/main/res/drawable/bubble_icon.png`
 
 ## Contribute
 
-If you want to contribute the source code is here.
-https://github.com/fab-it-hub/react-native-floating-bubble
+If you want to contribute the source code is [here](https://github.com/fab-it-hub/react-native-floating-bubble).
