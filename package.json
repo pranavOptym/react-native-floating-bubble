@@ -3,10 +3,16 @@
   "version": "1.0.1",
   "description": "A React Native library for creating floating bubbles (chat heads) on Android. Provides an easy-to-use API for displaying floating overlay bubbles that can be moved around the screen and respond to user interactions.",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "android/",
+    "ios/",
+    "windows/",
+    "README.md"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublishOnly": "npm pack --dry-run",
-    "publish:npm": "npm publish --access public"
+    "prepublishOnly": "npm pack --dry-run"
   },
   "keywords": [
     "react-native",
@@ -20,7 +26,7 @@
   ],
   "author": "Pranav Baradkar",
   "peerDependencies": {
-    "react-native": "^0.73.11"
+    "react-native": "*"
   },
   "repository": {
     "type": "git",
