@@ -1,8 +1,17 @@
-# react-native-floating-bubble
+# @routemax/react-native-floating-bubble
 
-> It is a fork of [Hybriteq's React Native Floating Bubble](https://github.com/hybriteq/react-native-floating-bubble) repository and is compatible with the newest `react-native v0.72.3`.
+> A React Native library for creating floating bubbles (chat heads) on Android. This is a fork of [Hybriteq's React Native Floating Bubble](https://github.com/hybriteq/react-native-floating-bubble) repository and is compatible with React Native v0.73.11+.
 
-A simple Facebook Chat Head like bubble for react native. Special thanks to [bubble-for-android](https://github.com/txusballesteros/bubbles-for-android) because this is just react native wrapper for that library.
+A simple Facebook Chat Head like bubble for React Native. Special thanks to [bubble-for-android](https://github.com/txusballesteros/bubbles-for-android) because this is just a React Native wrapper for that library.
+
+## Features
+
+- ✅ Create floating overlay bubbles on Android
+- ✅ Customizable bubble position
+- ✅ Event listeners for bubble interactions
+- ✅ Permission handling for system overlay
+- ✅ TypeScript support
+- ✅ Easy integration with React Native apps
 
 ## Preview
 
@@ -11,12 +20,26 @@ A simple Facebook Chat Head like bubble for react native. Special thanks to [bub
 ## Installation
 
 ```bash
-yarn add @fabithub/react-native-floating-bubble
+npm install @routemax/react-native-floating-bubble
+```
+
+or
+
+```bash
+yarn add @routemax/react-native-floating-bubble
+```
+
+### Android Setup
+
+Add the following permission to your `android/app/src/main/AndroidManifest.xml`:
+
+```xml
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 ```
 
 ## Usage
 
-### Methods
+### Basic Implementation
 
 ```javascript
 import {
@@ -27,7 +50,7 @@ import {
 	requestPermission,
 	showFloatingBubble,
 	hideFloatingBubble,
-} from "@fabithub/react-native-floating-bubble";
+} from "@routemax/react-native-floating-bubble";
 
 // To display the bubble over other apps you need to get 'Draw Over Other Apps' permission from android.
 // If you initialize without having the permission App could crash
@@ -35,14 +58,29 @@ requestPermission()
 	.then(() => console.log("Permission Granted"))
 	.catch(() => console.log("Permission is not granted"));
 
-// Initialize bubble manage
-initialize().then(() => console.log("Initialized the bubble mange"));
+// Initialize bubble manager
+initialize().then(() => console.log("Initialized the bubble manager"));
 
 // Show Floating Bubble: x=10, y=10 position of the bubble
 showFloatingBubble(10, 10).then(() => console.log("Floating Bubble Added"));
 
 // Hide Floating Bubble
 hideFloatingBubble().then(() => console.log("Floating Bubble Removed"));
+```
+
+### TypeScript Support
+
+This package includes TypeScript definitions. All methods are properly typed:
+
+```typescript
+import FloatingBubble, { 
+	showFloatingBubble, 
+	hideFloatingBubble 
+} from "@routemax/react-native-floating-bubble";
+
+// All methods return promises and are properly typed
+const isOpen: boolean = await FloatingBubble.isBubbleOpen();
+await showFloatingBubble(50, 100); // x and y are optional with defaults
 ```
 
 ### Events
@@ -52,13 +90,16 @@ You can listen to bubble press and bubble remove events using **`DeviceEventEmit
 Events: `floating-bubble-press`, `floating-bubble-remove`
 
 ```javascript
+import { DeviceEventEmitter } from 'react-native';
+
 DeviceEventEmitter.addListener("floating-bubble-press", (e) => {
-	// What to do when user press the bubble
-	console.log("Press Bubble");
+	// What to do when user presses the bubble
+	console.log("Bubble pressed");
 });
+
 DeviceEventEmitter.addListener("floating-bubble-remove", (e) => {
 	// What to do when user removes the bubble
-	console.log("Remove Bubble");
+	console.log("Bubble removed");
 });
 ```
 
@@ -66,6 +107,31 @@ DeviceEventEmitter.addListener("floating-bubble-remove", (e) => {
 
 Place the icon file as `android/app/src/main/res/drawable/bubble_icon.png`
 
-## Contribute
+## Platform Support
 
-If you want to contribute the source code is [here](https://github.com/fab-it-hub/react-native-floating-bubble).
+- ✅ Android
+- ❌ iOS (iOS doesn't support system overlay bubbles due to platform restrictions)
+
+## Requirements
+
+- React Native >= 0.73.11
+- Android API level 23+ (for overlay permissions)
+
+## Troubleshooting
+
+### Permission Issues
+Make sure to request overlay permission before initializing the bubble manager:
+
+```javascript
+const hasPermission = await checkPermission();
+if (!hasPermission) {
+	await requestPermission();
+}
+await initialize();
+```
+
+### App Crashes
+If your app crashes when showing the bubble, ensure you have:
+1. Added the SYSTEM_ALERT_WINDOW permission to AndroidManifest.xml
+2. Requested and received overlay permission from the user
+3. Called `initialize()` before `showFloatingBubble()`
