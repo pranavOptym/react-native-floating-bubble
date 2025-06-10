@@ -40,5 +40,5 @@ allprojects {
 
 dependencies {
     implementation 'com.facebook.react:react-native'
-    compile 'com.txusballesteros:bubbles:1.2.1'
+    implementation 'com.github.txusballesteros:bubbles-for-android:develop-SNAPSHOT'
 }
